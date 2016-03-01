@@ -107,13 +107,14 @@ def generate_string(length):
     if length == 0:
         return ''
 
-    ret = ''
-    for p in _phoneme_generator():
-        ret += p.phoneme
-        if len(ret) == length:
-            return ret
-        elif len(ret) > length:
-            ret = ''
+    while True:
+        ret = ''
+        for p in _phoneme_generator():
+            ret += p.phoneme
+            if len(ret) == length:
+                return ret
+            elif len(ret) > length:
+                break
 
 def positive_int(value):
     value = int(value)
