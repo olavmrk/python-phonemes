@@ -115,10 +115,16 @@ def generate_string(length):
         elif len(ret) > length:
             ret = ''
 
+def positive_int(value):
+    value = int(value)
+    if value <= 0:
+        raise argparse.ArgumentTypeError('Must be a positive integer')
+    return value
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Generate strings of phonemes')
-    parser.add_argument('count', type=int, help='Number of words to generate')
-    parser.add_argument('length', type=int, nargs='?', help='Length of each word')
+    parser.add_argument('count', type=positive_int, help='Number of words to generate')
+    parser.add_argument('length', type=positive_int, nargs='?', help='Length of each word')
     args = parser.parse_args()
     for i in xrange(0, args.count):
         if args.length is not None:
