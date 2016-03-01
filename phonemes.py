@@ -118,13 +118,13 @@ if __name__ == '__main__':
     import os.path
     import sys
     if len(sys.argv) < 3:
-        print('Usage: {prog} LENGTH COUNT'.format(prog=os.path.basename(sys.argv[0])), file=sys.stderr)
+        print('Usage: {prog} COUNT LENGTH'.format(prog=os.path.basename(sys.argv[0])), file=sys.stderr)
         sys.exit(1)
-    if sys.argv[1] == '-':
+    if sys.argv[2] == '-':
         length = None
     else:
-        length = int(sys.argv[1])
-    count = int(sys.argv[2])
+        length = int(sys.argv[2])
+    count = int(sys.argv[1])
     for i in xrange(0, count):
         if length is not None:
             c_length = length
