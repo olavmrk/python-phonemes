@@ -116,9 +116,9 @@ def generate_string(length):
             ret = ''
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('count', type=int)
-    parser.add_argument('length', type=int, nargs='?')
+    parser = argparse.ArgumentParser('Generate strings of phonemes')
+    parser.add_argument('count', type=int, help='Number of words to generate')
+    parser.add_argument('length', type=int, nargs='?', help='Length of each word')
     args = parser.parse_args()
     for i in xrange(0, args.count):
         if args.length is not None:
