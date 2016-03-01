@@ -10,11 +10,12 @@ Usage
 The script takes in two parameters:
 
 ```
-phonemes.py COUNT LENGTH
+phonemes.py COUNT [LENGTH]
 ```
 
 The first parameter is the number of words, while the second is the word length
-`LENGTH` can be specified as `-`, to generate words of random length.
+`LENGTH` is optional.
+Leave it off to generate words of random length.
 
 Examples
 --------
@@ -31,7 +32,7 @@ ohhah
 Generate 5 words with random length:
 
 ```
-$ ./phonemes.py 5 -
+$ ./phonemes.py 5
 wiesh
 aigahvua
 xahth

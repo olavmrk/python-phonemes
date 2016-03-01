@@ -117,10 +117,10 @@ def generate_string(length):
 if __name__ == '__main__':
     import os.path
     import sys
-    if len(sys.argv) < 3:
-        print('Usage: {prog} COUNT LENGTH'.format(prog=os.path.basename(sys.argv[0])), file=sys.stderr)
+    if len(sys.argv) < 2:
+        print('Usage: {prog} COUNT [LENGTH]'.format(prog=os.path.basename(sys.argv[0])), file=sys.stderr)
         sys.exit(1)
-    if sys.argv[2] == '-':
+    if len(sys.argv) < 3:
         length = None
     else:
         length = int(sys.argv[2])
