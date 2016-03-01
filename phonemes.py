@@ -15,6 +15,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import argparse
 import random
 
 class _Phoneme(object):
@@ -115,19 +116,13 @@ def generate_string(length):
             ret = ''
 
 if __name__ == '__main__':
-    import os.path
-    import sys
-    if len(sys.argv) < 2:
-        print('Usage: {prog} COUNT [LENGTH]'.format(prog=os.path.basename(sys.argv[0])), file=sys.stderr)
-        sys.exit(1)
-    if len(sys.argv) < 3:
-        length = None
-    else:
-        length = int(sys.argv[2])
-    count = int(sys.argv[1])
-    for i in xrange(0, count):
-        if length is not None:
-            c_length = length
+    parser = argparse.ArgumentParser()
+    parser.add_argument('count', type=int)
+    parser.add_argument('length', type=int, nargs='?')
+    args = parser.parse_args()
+    for i in xrange(0, args.count):
+        if args.length is not None:
+            c_length = args.length
         else:
             c_length = int(random.normalvariate(7, 2))
             if c_length < 1:
