@@ -122,7 +122,7 @@ def positive_int(value):
         raise argparse.ArgumentTypeError('Must be a positive integer')
     return value
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser('Generate strings of phonemes')
     parser.add_argument('count', type=positive_int, help='Number of words to generate')
     parser.add_argument('length', type=positive_int, nargs='?', help='Length of each word')
@@ -136,3 +136,5 @@ if __name__ == '__main__':
                 c_length = 1
         print(generate_string(c_length))
 
+if __name__ == '__main__':
+    main()
