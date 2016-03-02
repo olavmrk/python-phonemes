@@ -104,9 +104,6 @@ def _phoneme_generator():
 
 
 def generate_string(length):
-    if length == 0:
-        return ''
-
     while True:
         ret = ''
         for p in _phoneme_generator():
