@@ -119,6 +119,12 @@ def positive_int(value):
         raise argparse.ArgumentTypeError('Must be a positive integer')
     return value
 
+def random_word_length():
+    length = int(random.normalvariate(7, 2))
+    if length < 1:
+        length = 1
+    return length
+
 def main():
     parser = argparse.ArgumentParser('Generate words of phonemes')
     parser.add_argument('count', type=positive_int, help='Number of words to generate')
@@ -128,9 +134,7 @@ def main():
         if args.length is not None:
             c_length = args.length
         else:
-            c_length = int(random.normalvariate(7, 2))
-            if c_length < 1:
-                c_length = 1
+            c_length = random_word_length()
         print(generate_word(c_length))
 
 if __name__ == '__main__':
