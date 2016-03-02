@@ -1,7 +1,7 @@
 phonemes.py
 ===========
 
-This was a script I wrote to generate strings of phonemes.
+This was a script I wrote to generate words of phonemes.
 It is heavily based on the code in [pwgen](http://sourceforge.net/projects/pwgen/).
 
 Usage

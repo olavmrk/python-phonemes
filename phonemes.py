@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #
-# Generate a string of phonemes.
+# Generate words of phonemes.
 #
 # Based on the pwgen utility, however this is not
 # suitable for creating passwords.
@@ -103,7 +103,7 @@ def _phoneme_generator():
         prev_type = phoneme
 
 
-def generate_string(length):
+def generate_word(length):
     while True:
         ret = ''
         for p in _phoneme_generator():
@@ -120,7 +120,7 @@ def positive_int(value):
     return value
 
 def main():
-    parser = argparse.ArgumentParser('Generate strings of phonemes')
+    parser = argparse.ArgumentParser('Generate words of phonemes')
     parser.add_argument('count', type=positive_int, help='Number of words to generate')
     parser.add_argument('length', type=positive_int, nargs='?', help='Length of each word')
     args = parser.parse_args()
@@ -131,7 +131,7 @@ def main():
             c_length = int(random.normalvariate(7, 2))
             if c_length < 1:
                 c_length = 1
-        print(generate_string(c_length))
+        print(generate_word(c_length))
 
 if __name__ == '__main__':
     main()
