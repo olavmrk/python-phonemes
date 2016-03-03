@@ -134,6 +134,7 @@ def main():
     parser = argparse.ArgumentParser('Generate words of phonemes')
     parser.add_argument('count', type=positive_int, help='Number of words to generate')
     parser.add_argument('length', type=positive_int, nargs='?', help='Length of each word')
+    parser.add_argument('--one-line', action='store_true', help='Print all words on a single line')
     args = parser.parse_args()
     if args.length is not None:
         word_length_fn = lambda: args.length
@@ -141,8 +142,15 @@ def main():
         word_length_fn = random_word_length
     words = word_generator(word_length_fn)
     words = itertools.islice(words,  args.count)
-    for word in words:
-        print(word)
+    if args.one_line:
+        first_word = next(words) # We will always have at least on word, so this is safe
+        print(first_word, end='')
+        for word in words:
+            print(' ' + word, end='')
+        print()
+    else:
+        for word in words:
+            print(word)
 
 if __name__ == '__main__':
     main()
