@@ -16,6 +16,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import argparse
+import itertools
 import random
 
 class _Phoneme(object):
@@ -125,6 +126,10 @@ def random_word_length():
         length = 1
     return length
 
+def word_generator(word_length_fn):
+    while True:
+        yield generate_word(word_length_fn())
+
 def main():
     parser = argparse.ArgumentParser('Generate words of phonemes')
     parser.add_argument('count', type=positive_int, help='Number of words to generate')
@@ -134,8 +139,10 @@ def main():
         word_length_fn = lambda: args.length
     else:
         word_length_fn = random_word_length
-    for i in xrange(0, args.count):
-        print(generate_word(word_length_fn()))
+    words = word_generator(word_length_fn)
+    words = itertools.islice(words,  args.count)
+    for word in words:
+        print(word)
 
 if __name__ == '__main__':
     main()
