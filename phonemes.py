@@ -130,12 +130,12 @@ def main():
     parser.add_argument('count', type=positive_int, help='Number of words to generate')
     parser.add_argument('length', type=positive_int, nargs='?', help='Length of each word')
     args = parser.parse_args()
+    if args.length is not None:
+        word_length_fn = lambda: args.length
+    else:
+        word_length_fn = random_word_length
     for i in xrange(0, args.count):
-        if args.length is not None:
-            c_length = args.length
-        else:
-            c_length = random_word_length()
-        print(generate_word(c_length))
+        print(generate_word(word_length_fn()))
 
 if __name__ == '__main__':
     main()
